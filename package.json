@@ -1,13 +1,17 @@
 {
-  "name":"products-database",
+  "name": "products-database",
   "version": "1.0.0",
-  "scripts":{
-    "start": "node server/index.js",
-    "test": "node server/index.js"
+  "scripts": {
+    "start": "node DB/index.js",
+    "test": "nodemon ./server/index.js localhost 3000"
   },
   "dependencies": {
-      "axios": "^0.27.2",
-      "express": "^4.18.1",
-      "pg": "^8.7.3"
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "pg-promise": "^10.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
   }
 }

@@ -1,13 +1,11 @@
-const {Client} = require('pg');
-const client = new Client({
-  user: "Kayla",
-  password: "Wajja7qq7",
-  port: 5432,
-  database: "products"
-});
+const pgp = require('pg-promise')();
+require('dotenv').config();
+const {USERNAME, PASSWORD, HOST, DBPORT} = process.env;
 
-client.connect()
-.then(() => console.log("Connected successfully"))
-.then(() => )
-.catch(e => console.log(e))
-.finally(() => client.end());
+
+const connectString =
+  `postgresql://${USERNAME}:${PASSWORD}@${HOST}:${DBPORT}/products`;
+
+  const db = pgp(connectString);
+
+  module.exports = { db };
