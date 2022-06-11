@@ -27,7 +27,7 @@ const getProductById = (productId) => {
 ) AS RESULT
 FROM product pd
 WHERE pd.id = $1;`, [productId]);
-}
+};
 
 const getStylesByProductId = (productId) => {
   return db.query(`
@@ -66,10 +66,19 @@ const getStylesByProductId = (productId) => {
 FROM product pd
 WHERE pd.id = $1;
   `, [productId]);
-}
+};
+
+const getRelatedByProductId = (product_Id) => {
+  return db.query(`
+  SELECT json_agg(r.related_product_id)
+  AS Result
+  FROM related r WHERE current_product_id = $1;
+  `, [product_Id]);
+};
 
 module.exports = {
   getProducts,
   getProductById,
-  getStylesByProductId
+  getStylesByProductId,
+  getRelatedByProductId
 }
