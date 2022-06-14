@@ -10,20 +10,19 @@ const app = express();
 app.use(express.json());
 
 app.get("/products", (req, res) => {
+  console.log('/products called')
   getProducts(req.query.page, req.query.count)
     .then((results) => res.status(200).send(results))
     .catch((err) => {
-      console.log(err);
-      res.sendStatus(502);
+      res.sendStatus(404);
     });
 });
 
 app.get("/products/:productId", (req, res) => {
   getProductById(req.params.productId)
-    .then((results) => res.status(200).send(results))
+    .then((results) => res.status(200).send(results[0].result))
     .catch((err) => {
-      console.log(err);
-      res.sendStatus(502);
+      res.sendStatus(404);
     });
 });
 
@@ -31,8 +30,7 @@ app.get("/products/:productId/styles", (req, res) => {
   getStylesByProductId(req.params.productId)
   .then((results) => res.status(200).send(results[0].result))
   .catch((err) => {
-    console.log(err);
-    res.sendStatus(502);
+    res.sendStatus(404);
   });
 });
 
@@ -40,8 +38,7 @@ app.get("/products/:productId/related", (req, res) => {
   getRelatedByProductId(req.params.productId)
   .then((results) => res.status(200).send(results[0].result))
   .catch((err) => {
-    console.log(err);
-    res.sendStatus(502);
+    res.sendStatus(404);
   });
 });
 

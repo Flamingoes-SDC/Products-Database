@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node DB/index.js",
-    "test": "nodemon ./server/index.js localhost 3000"
+    "test-server": "nodemon ./server/index.js localhost 3000",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.27.2",
