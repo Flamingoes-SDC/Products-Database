@@ -14,7 +14,7 @@ app.get("/products", (req, res) => {
   getProducts(req.query.page, req.query.count)
     .then((results) => res.status(200).send(results))
     .catch((err) => {
-      res.sendStatus(404);
+      res.sendStatus(500);
     });
 });
 
@@ -22,7 +22,7 @@ app.get("/products/:productId", (req, res) => {
   getProductById(req.params.productId)
     .then((results) => res.status(200).send(results[0].result))
     .catch((err) => {
-      res.sendStatus(404);
+      res.sendStatus(500);
     });
 });
 
@@ -30,7 +30,7 @@ app.get("/products/:productId/styles", (req, res) => {
   getStylesByProductId(req.params.productId)
   .then((results) => res.status(200).send(results[0].result))
   .catch((err) => {
-    res.sendStatus(404);
+    res.sendStatus(500);
   });
 });
 
@@ -38,7 +38,7 @@ app.get("/products/:productId/related", (req, res) => {
   getRelatedByProductId(req.params.productId)
   .then((results) => res.status(200).send(results[0].result))
   .catch((err) => {
-    res.sendStatus(404);
+    res.sendStatus(500);
   });
 });
 

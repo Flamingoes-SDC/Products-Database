@@ -5,7 +5,7 @@ const getProducts = (pageReq, countReq) => {
   let count = countReq || 5;
   let offSet = (page * count) - count;
 
-  return db.query(`SELECT * FROM product LIMIT $1 OFFSET $2`, [count, offSet]);
+  return db.query(`SELECT * FROM product WHERE id > $2 LIMIT $1`, [count, offSet]);
 };
 
 const getProductById = (productId) => {
